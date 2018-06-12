@@ -1,0 +1,16 @@
+{
+  "name": "paletas.js",
+  "version": "0.1.0",
+  "description": "A very small, very specific color palettes library",
+  "main": "paletas.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Ashur Cabrera <hello@cabreramade.co>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
