@@ -4,7 +4,7 @@
   "description": "A very small, very specific color palettes library",
   "main": "paletas.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha ./tests"
   },
   "keywords": [],
   "author": "Ashur Cabrera <hello@cabreramade.co>",
