@@ -24,6 +24,15 @@ class Color
 	}
 
 	/**
+	 * Creates an instance from a hexadecimal string
+	 */
+	static createFromHex( hex )
+	{
+		const hsl = chroma( hex ).hsl();
+		return new Color( hsl[0], hsl[1], hsl[2] );
+	}
+
+	/**
 	 * Hue getter and setter
 	 */
 	get h()

@@ -65,6 +65,21 @@ describe( 'Color', function()
 		});
 	});
 
+	describe( '.createFromHex', function()
+	{
+		it( 'creates an instance of Color from a hex string', function()
+		{
+			let hexString = '#00ff00';
+			let color = Color.createFromHex( hexString );
+
+			assert.equal( 120, color.h );
+			assert.equal( 1, color.s );
+			assert.equal( 0.5, color.l );
+
+			assert.equal( hexString, color.hex );
+		});
+	});
+
 	describe( '.h', function()
 	{
 		it( 'is set by constructor', function()
