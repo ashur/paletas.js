@@ -78,6 +78,14 @@ describe( 'Color', function()
 
 			assert.equal( hexString, color.hex );
 		});
+
+		it( 'supports hueless colors', function()
+		{
+			let hexString = '#ffffff';
+			let color = Color.createFromHex( hexString );
+
+			assert.equal( 0, color.h );
+		});
 	});
 
 	describe( '.h', function()

@@ -29,7 +29,12 @@ class Color
 	static createFromHex( hex )
 	{
 		const hsl = chroma( hex ).hsl();
-		return new Color( hsl[0], hsl[1], hsl[2] );
+
+		let h = Number.isNaN( hsl[0] ) ? 0 : hsl[0];
+		let s = hsl[1];
+		let l = hsl[2];
+
+		return new Color( h, s, l );
 	}
 
 	/**
