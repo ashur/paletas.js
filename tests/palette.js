@@ -2,6 +2,29 @@ const assert = require( "chai" ).assert;
 const Color = require( "../src/color.js" );
 const Palette = require( "../src/palette.js" );
 
+let createPalette =
+{
+	fromColors( colors )
+	{
+		return new Palette( 140, 'My Palette', colors );
+	},
+
+	fromId( id )
+	{
+		return new Palette( id, 'My Palette', [] );
+	},
+
+	fromName( name )
+	{
+		return new Palette( 280, name, [] );
+	},
+
+	instance()
+	{
+		return new Palette( 140, 'My Palette', [] );
+	},
+};
+
 describe( 'Palette', function()
 {
 	describe( '.colors', function()
@@ -11,7 +34,7 @@ describe( 'Palette', function()
 			let colors = [
 				new Color( 1, 0.23, 0.45 ),
 			];
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 
 			assert.equal( 1, palette.colors.length );
 
@@ -30,7 +53,7 @@ describe( 'Palette', function()
 				assert.isNull( color.index );
 			});
 
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 			palette.colors.forEach( (color, index) =>
 			{
 				assert.equal( index, color.index );
@@ -49,7 +72,7 @@ describe( 'Palette', function()
 				new Color( 2, 0.34, 0.56 ),
 			];
 
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 			palette.wizard = function( colors, index )
 			{
 				colorsCanary = colors;
@@ -73,7 +96,7 @@ describe( 'Palette', function()
 				new Color( 2, 0.34, 0.56 ),
 			];
 
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 
 			let wizardCanary = 0;
 			palette.wizard = function( colors, index )
@@ -95,7 +118,7 @@ describe( 'Palette', function()
 				new Color( 2, 0.34, 0.56 ),
 			];
 
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 
 			let didRunWizard = false;
 			let shouldEmitCanary = false;
@@ -127,7 +150,7 @@ describe( 'Palette', function()
 				new Color( 2, 0.34, 0.56 ),
 			];
 
-			let palette = new Palette( colors );
+			let palette = createPalette.fromColors( colors );
 
 			let indexCanary, isEditableCanary;
 			palette.wizard = function( colors, index )
@@ -142,6 +165,37 @@ describe( 'Palette', function()
 			assert.equal( updatedIndex, indexCanary );
 			assert.isFalse( isEditableCanary );
 			assert.isTrue( palette.colors[updatedIndex].isEditable );
+		});
+	});
+
+	describe( '.enabled', function()
+	{
+		it( 'is true by default', function()
+		{
+			let palette = createPalette.instance();
+			assert.isTrue( palette.enabled );
+		});
+	});
+
+	describe( '.id', function()
+	{
+		it( 'is set by constructor', function()
+		{
+			let id = 140;
+			let palette = createPalette.fromId( id );
+
+			assert.equal( id, palette.id );
+		});
+	});
+
+	describe( '.name', function()
+	{
+		it( 'is set by constructor', function()
+		{
+			let name = 'My Palette ✌️';
+			let palette = createPalette.fromName( name );
+
+			assert.equal( name, palette.name );
 		});
 	});
 });

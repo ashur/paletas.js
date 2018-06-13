@@ -1,10 +1,18 @@
 class Palette
 {
 	/**
+	 * @param {number} id
+	 *
+	 * @param {string} name
+	 *
 	 * @param {Array.Color} colors An array of Color objects
 	 */
-	constructor( colors )
+	constructor( id, name, colors )
 	{
+		this.id = id;
+		this.name = name;
+		this.enabled = true;
+
 		this.colors = colors.map( (color, index) =>
 		{
 			color.index = index;
