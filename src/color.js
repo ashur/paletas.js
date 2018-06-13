@@ -46,13 +46,13 @@ class Color
 	}
 	set h( h )
 	{
-		if( h >= 0 && h <= 359 )
+		if( h >= 0 && h <= 360 )
 		{
 			this.setValue( 'h', h );
 		}
 		else
 		{
-			throw new Error( `Hue value (${h}) out of range (0-359)` );
+			throw new Error( `Hue value (${h}) out of range (0-360)` );
 		}
 	}
 
