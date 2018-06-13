@@ -91,6 +91,15 @@ describe( 'Color', function()
 		});
 	});
 
+	describe( '.hex', function()
+	{
+		it( 'is computed from HSL values', function()
+		{
+			let color = new Color( 38.82, 1, 0.5 );
+			assert.equal( '#ffa500', color.hex );
+		});
+	});
+
 	describe( '.s', function()
 	{
 		it( 'is set by constructor', function()

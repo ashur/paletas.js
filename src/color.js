@@ -1,3 +1,5 @@
+const chroma = require( 'chroma-js' );
+
 class Color
 {
 	/**
@@ -38,6 +40,16 @@ class Color
 		{
 			throw new Error( `Hue value (${h}) out of range (0-359)` );
 		}
+	}
+
+	/**
+	 * Returns hexadecimal representation of color
+	 *
+	 * @return {string}
+	 */
+	get hex()
+	{
+		return chroma.hsl( this.data.h, this.data.s, this.data.l ).hex();
 	}
 
 	/**
