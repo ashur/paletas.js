@@ -166,6 +166,26 @@ describe( 'Palette', function()
 			assert.isFalse( isEditableCanary );
 			assert.isTrue( palette.colors[updatedIndex].isEditable );
 		});
+
+		it( 'does not address non-existent `colors` index', function()
+		{
+			let palette = createPalette.fromColors([
+				new Color( 1, 0.23, 0.45 ),
+			]);
+
+			palette.wizard = function( colors )
+			{
+				colors[0].h = 300;
+				colors[0].s = 0;
+				colors[0].l = 1;
+			};
+
+			palette.callWizard( -1 );
+
+			assert.equal( 300, palette.colors[0].h );
+			assert.equal(   0, palette.colors[0].s );
+			assert.equal(   1, palette.colors[0].l );
+		});
 	});
 
 	describe( '.enabled', function()

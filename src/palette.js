@@ -31,7 +31,11 @@ class Palette
 	{
 		if( this.wizard )
 		{
-			this.colors[changedColor].isEditable = false;
+			if( this.colors[changedColor] )
+			{
+				this.colors[changedColor].isEditable = false;
+			}
+
 			this.colors.forEach( color =>
 			{
 				color.shouldEmit = false;
@@ -39,7 +43,11 @@ class Palette
 
 			this.wizard( this.colors, changedColor );
 
-			this.colors[changedColor].isEditable = true;
+			if( this.colors[changedColor] )
+			{
+				this.colors[changedColor].isEditable = true;
+			}
+
 			this.colors.forEach( color =>
 			{
 				color.shouldEmit = true;
